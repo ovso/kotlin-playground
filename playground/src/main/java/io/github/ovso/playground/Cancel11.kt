@@ -8,6 +8,7 @@ import kotlin.system.measureTimeMillis
 object Cancel11 {
     /*
      1000ms 가 소요되는 일시중단 함수를 2개를 순차 처리 하기 때문에 연상을 수행하는 데 2000ms 을 초과 합니다.
+     빠르게 처리하기 위해 비동기를 사용한 동시성이 필요합니다. one, two 간에 종속성이 사라지면서 빠르게 처리할 수 있습니다.
      */
     @JvmStatic
     fun main(args: Array<String>) = runBlocking {
