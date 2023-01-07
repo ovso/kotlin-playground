@@ -5,6 +5,9 @@ package io.github.ovso.playground
 import kotlinx.coroutines.*
 
 object Cancel05 {
+    /**
+     * 취소가 완료되면 finally 가 실행됩니다.
+     */
     @JvmStatic
     fun main(args: Array<String>) = runBlocking {
         val job = launch(Dispatchers.Default) {

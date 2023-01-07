@@ -7,6 +7,7 @@ import kotlinx.coroutines.*
 object Cancel03 {
     /**
      * 취소를 했으나 취소가 안되는 상황 입니다.
+     * 물론, try/catch 아래 repeat 를 둔다면 취소 됩니다.
      */
     @JvmStatic
     fun main(args: Array<String>) = runBlocking {
