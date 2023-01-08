@@ -22,6 +22,10 @@ object Context03 {
 }
 
 /*
+세 개의 코루틴 모두 runBlocking 에서 실행되면 기본 쓰레드에서 동작합니다.
+*/
+
+/*
 코루틴을 디버깅 합니다.
 세 개의 코루틴이 존재합니다.
 1. Line 20 의 log 가 첫번째 코루틴 입니다. log는 RUNNING 상태입니다. 비동기 a, b 는 CREATED 상태입니다.
