@@ -7,9 +7,9 @@ import kotlinx.coroutines.*
 object Context02 {
     @JvmStatic
     fun main(args: Array<String>) = runBlocking<Unit> {
-        // 일반 코드에서느 사용하지 않는 디스패처 입니다.
-        // 일시중단 함수가 실행되지 전까지만 상속한 쓰레드(main) 에서 실행됩니다.
-        // 일시중단 함수가 실행된 이후에는 기본 쓰레드로 실행됩니다.
+        // 일반 코드에서는 사용하지 않는 디스패처 입니다.
+        // 일시중단 함수가 실행되기 전까지만 상속한 쓰레드(main) 에서 실행됩니다.
+        // 일시중단 함수부터는 기본 쓰레드로 실행됩니다.
         launch(Dispatchers.Unconfined) { // not confined -- will work with main thread
             println("Unconfined      : I'm working in thread ${Thread.currentThread().name}")
             delay(500)
