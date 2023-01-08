@@ -7,7 +7,7 @@ import kotlin.system.measureTimeMillis
 
 object Compose04 {
     /*
-    somethingUsefulOneAsync, somethingUsefulTowAsync 함수는 suspending(일시 중단) 함수가 아닙니다.
+    비동기 스타일 함수(somethingUsefulOneAsync, somethingUsefulTowAsync) 는 suspending(일시 중단) 함수가 아닙니다.
     runBlocking 외부에서 실행된다는 것을 보면 알 수 있습니다.
      */
     @JvmStatic
