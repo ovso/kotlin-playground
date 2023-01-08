@@ -5,20 +5,21 @@ package io.github.ovso.playground
 import kotlinx.coroutines.*
 import kotlin.system.measureTimeMillis
 
-object Cancel11 {
+object Compose03 {
     /*
-     1000ms 가 소요되는 일시중단 함수를 2개를 순차 처리 하기 때문에 연상을 수행하는 데 2000ms 을 초과 합니다.
-     빠르게 처리하기 위해 비동기를 사용한 동시성이 필요합니다. one, two 간에 종속성이 사라지면서 빠르게 처리할 수 있습니다.
+    async(start = CoroutineStart.LAZY)  는 async{..} 와는 다르다.
+    start() 함수를 호출해야만 suspend 기능을 활성화 시킨다. start() 를 호출하지 않으면 동 순차 실행 된다.
      */
     @JvmStatic
     fun main(args: Array<String>) = runBlocking {
-        Thread.currentThread().name.also {
-            println(it)
-        }
         val time = measureTimeMillis {
-            val one = doSomethingUsefulOne()
-            val two = doSomethingUsefulTwo()
-            println("The answer is ${one + two}")
+            val one = async(start = CoroutineStart.LAZY) { doSomethingUsefulOne() }
+            val two = async(start = CoroutineStart.LAZY) { doSomethingUsefulTwo() }
+
+            one.start()
+            two.start()
+
+            println("The answer is ${one.await() + two.await()}")
         }
         println("Completed in $time ms")
     }
