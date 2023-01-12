@@ -1,13 +1,9 @@
-@file:Suppress("SpellCheckingInspection")
-
 package io.github.ovso.playground
 
-import io.github.ovso.playground.Context11.threadLocal
 import kotlinx.coroutines.*
 
 object Context11 {
-    val threadLocal = ThreadLocal<String?>() // declare thread-local variable
-}
+    private val threadLocal = ThreadLocal<String?>() // declare thread-local variable
     fun main(args: Array<String>) = runBlocking {
         threadLocal.set("main")
         println("Pre-main, current thread: ${Thread.currentThread()}, thread local value: '${threadLocal.get()}'")
@@ -19,3 +15,4 @@ object Context11 {
         job.join()
         println("Post-main, current thread: ${Thread.currentThread()}, thread local value: '${threadLocal.get()}'")
     }
+}
