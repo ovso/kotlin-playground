@@ -18,6 +18,9 @@ fun simple(): Flow<Int> = flow {
     }
 }.flowOn(Dispatchers.Default) // Flow Builder에서 CPU를 많이 사용하는 코드의 컨텍스트를 변경하는 올바른 방법 입니다.
 
+/*
+Flow 는 백그라운드 쓰레드에서 실행되는 반면, collect 는 메인 쓰레드에서 실행됩니다.
+ */
 fun main() = runBlocking<Unit> {
     simple().collect { value ->
         log("Collected $value")
