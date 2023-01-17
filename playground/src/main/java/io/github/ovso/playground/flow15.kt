@@ -11,14 +11,15 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.runBlocking
 
 fun simple(): Flow<Int> = flow {
-    // The WRONG way to change context for CPU-consuming code in flow builder
     for (i in 1..3) {
-        Thread.sleep(100) // pretend we are computing it in CPU-consuming way
+        Thread.sleep(100) // CPU를 많이 사용하는 방식으로 계산한다고 가정합니다.
         log("Emitting $i")
         emit(i) // emit next value
     }
-}.flowOn(Dispatchers.Default)
+}.flowOn(Dispatchers.Default) // Flow Builder에서 CPU를 많이 사용하는 코드의 컨텍스트를 변경하는 올바른 방법 입니다.
 
-fun main() = runBlocking {
-    simple().collect { value -> log("Collected $value") }
+fun main() = runBlocking<Unit> {
+    simple().collect { value ->
+        log("Collected $value")
+    }
 }
