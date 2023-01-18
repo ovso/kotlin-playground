@@ -19,8 +19,8 @@ fun simple(): Flow<Int> = flow {
 
 /**
  * Flow에서 순차적으로 실행하는 것과는 반대로, Buffer 연산자를 사용하여 코드 수집과 동시에 simple() 방출 코드를 실행할 수 있습니다.
- * buffer 를 사용하지 않으면, 발행에서의 100ms + 소비에서의 300ms 가 순차적으로 발생하면서 모든 데이터를 소비하는 시간이 1200ms 를 넘길 것이라 예상합니다.
- * 그러나 buffer 를 사용하면 소비와 다른 코루틴에서 데이터발행이 비동기로 일어나고, 소비만 순차적으로 발생하기 때문에 모든 데이터를 소비하는 시간이 1000ms 안팎이라 예상할 수 있습니다.
+ * buffer 를 사용하지 않으면, 발행에서의 100ms + 소비에서의 300ms 가 순차적으로 발생하면서 모든 데이터를 소비하는 시간이 1200ms 를 넘길 것이라 예상합니다. 이는 하나의 코루틴에서 데이터 방출과 소비를 실행합니다.
+ * 그러나 buffer 를 사용하면 방출과 소비가 다른 코루틴 실행됩니다. 때문에 모든 데이터를 소비하는 시간이 1000ms 안팎이라 예상할 수 있습니다.
  */
 fun main() = runBlocking {
     val time = measureTimeMillis {
@@ -35,4 +35,5 @@ fun main() = runBlocking {
 }
 
 // https://kotlinlang.org/docs/flow.html#buffering
+// https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/buffer.html
 // https://kotlinworld.com/253
