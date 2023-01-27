@@ -15,7 +15,6 @@ fun simple(): Flow<Int> = flow {
         emit(i) // emit next value
     }
 }
-
 fun main() = runBlocking {
     val time = measureTimeMillis {
         simple().collect { value ->
