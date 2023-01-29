@@ -26,3 +26,5 @@ fun main() = runBlocking {
         println("Caught $e")
     }
 }
+
+// https://kotlinlang.org/docs/flow.html#exception-transparency
