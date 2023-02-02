@@ -13,7 +13,9 @@ fun simple(): Flow<Int> = flow {
     }
 }
 
-/** catch 중간 연산자를 업스트림 예외만 catch 합니다. catch 중간 연산자 아래의 스트림은 catch 하지 않아 예외가 발생합니다.*/
+/** catch 중간 연산자를 업스트림 예외만 catch 합니다. catch 중간 연산자 아래의 스트림은 catch 하지 않아 예외가 발생합니다.
+ * collect 안에서 예외 발생하면 println 하지 않습니다.
+ * */
 fun main() = runBlocking {
     simple()
         .catch { e -> println("Caught $e") } // does not catch downstream exceptions
