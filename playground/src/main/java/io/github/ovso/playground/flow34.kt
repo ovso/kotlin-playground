@@ -27,3 +27,5 @@ fun main() = runBlocking {
 1
 Flow completed with java.lang.IllegalStateException: Collected 2
  */
+
+// https://kotlinlang.org/docs/flow.html#successful-completion
