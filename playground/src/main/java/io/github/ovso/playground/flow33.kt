@@ -12,14 +12,14 @@ fun simple(): Flow<Int> = flow {
 }
 
 /**
- * onCompletion 연산자는 catch 와 달리 예외를 처리하지 않습니다.
+ * onCompletion 연산자는 catch 와 달리 예외를 처리하지 않습니다
  * 예외는 여전히 다운스트림으로 흐릅니다.
  * onCompletion 중간연산자에게 전달되며 catch 연산자로 처리할 수 있습니다.
  */
 fun main() = runBlocking {
     simple()
         .onCompletion { cause ->
-            if (cause != null) println("Flow completed exceptionally")
+            if (cause != null) println("Flow completed exceptionally: $cause")
         }
         .catch { cause ->
             println("Caught exception $cause")
