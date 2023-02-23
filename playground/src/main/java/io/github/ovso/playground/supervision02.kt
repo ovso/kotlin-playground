@@ -28,5 +28,16 @@ fun main() = runBlocking {
 
 /*
 예상 출력
-
+// Throwing an exception from the scope
+// The child is sleeping
+// The child is cancelled
+// Caught an assertion error
+//
+ */
+/*
+실제 출력
+The child is sleeping
+Throwing an exception from the scope
+The child is cancelled
+Caught an assertion error
  */
